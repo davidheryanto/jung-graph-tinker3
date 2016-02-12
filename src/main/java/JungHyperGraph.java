@@ -17,9 +17,14 @@ import java.util.Set;
 public class JungHyperGraph implements Hypergraph<Vertex, Edge> {
 
     private final Graph graph;
+    private String ID = "id";
 
     public JungHyperGraph(Graph graph) {
         this.graph = graph;
+    }
+
+    public void setPropertyForId(String prop) {
+        this.ID = prop;
     }
 
     /**
@@ -55,7 +60,7 @@ public class JungHyperGraph implements Hypergraph<Vertex, Edge> {
      */
     @Override
     public boolean containsVertex(Vertex vertex) {
-        return graph.traversal().V().has("id", (Object) vertex.value("id")).hasNext();
+        return graph.traversal().V().has(ID, (Object) vertex.value(ID)).hasNext();
     }
 
     /**
@@ -67,7 +72,7 @@ public class JungHyperGraph implements Hypergraph<Vertex, Edge> {
      */
     @Override
     public boolean containsEdge(Edge edge) {
-        return graph.traversal().E().has("id", (Object) edge.value("id")).hasNext();
+        return graph.traversal().E().has(ID, (Object) edge.value(ID)).hasNext();
     }
 
     /**
