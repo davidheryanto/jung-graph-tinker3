@@ -55,7 +55,7 @@ public class JungHyperGraph implements Hypergraph<Vertex, Edge> {
      */
     @Override
     public boolean containsVertex(Vertex vertex) {
-        return graph.traversal().V().hasId(vertex.id()).hasNext();
+        return graph.traversal().V().has("id", (Object) vertex.value("id")).hasNext();
     }
 
     /**
@@ -67,7 +67,7 @@ public class JungHyperGraph implements Hypergraph<Vertex, Edge> {
      */
     @Override
     public boolean containsEdge(Edge edge) {
-        return graph.traversal().E().hasId(edge.id()).hasNext();
+        return graph.traversal().E().has("id", (Object) edge.value("id")).hasNext();
     }
 
     /**
